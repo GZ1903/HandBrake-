@@ -1,0 +1,17 @@
+services:
+  handbrake:
+    image: gz1903/handbrake:latest
+    container_name: handbrak
+    restart: unless-stopped
+    ports:
+     - 5800:5800
+    volumes:
+     - ./config:/config
+     - ./output:/output
+     - ./storage:/storage:ro
+     - ./watch:/watch
+    environment:
+     - LANG=zh_CN.UTF-8
+     - TZ=Asia/Shanghai
+    devices:
+     - /dev/dri:/dev/dri
